@@ -28,6 +28,11 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         onPressed: (){
             setState((){
+              //this setState() is used to refresh the state, you should
+              //do ur variable changes or property changes inside this function
+              //so that it will be reflected "live" on the app
+              //Not doing this will require you to hot reload the app
+              //to see any changes u did, and have it applied to the UI
               counter++;
             });
           },
