@@ -6,8 +6,14 @@ void main() => runApp(MaterialApp(
   home: Home(),
 ));
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  int counter = 0;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -18,6 +24,15 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.black,
         bottomOpacity: 0.0,
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+            setState((){
+              counter++;
+            });
+          },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.black,
       ),
       body: Stack(
         children: [
@@ -99,10 +114,10 @@ class Home extends StatelessWidget {
                                 Container(
                                   padding: EdgeInsets.fromLTRB(9,9,9,9),
                                   decoration: BoxDecoration(
-                                    color: Colors.black54,
+                                    color: Colors.black,
                                     borderRadius: BorderRadius.all(Radius.circular(20))
                                   ),
-                                  child: Text('Sample', style: TextStyle(color: Colors.white)),
+                                  child: Text(counter.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                                 ),
                               ],
                             ),
@@ -123,4 +138,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
