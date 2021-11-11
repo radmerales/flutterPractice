@@ -19,6 +19,35 @@ class _QuoteListState extends State<QuoteList> {
     Quote(author: 'Walter White', text: 'bleblo'),
     Quote(author: 'Imelda Marcos', text: 'We didnt'),
   ];
+  //this widget here is great for using it again and again
+  Widget quoteTemplate(quote){
+    return Card(
+      margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children:[
+            Text(
+              quote.text,
+              style: TextStyle(
+                fontSize: 30.0,
+                color: Colors.grey[600]
+              ),
+            ),
+            SizedBox(height:10),
+            Text(
+              quote.author,
+              style: TextStyle(
+                fontSize: 15.0,
+                color: Colors.yellow[900],
+              )
+            )
+          ]
+        ),
+      ),
+    );
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +64,7 @@ class _QuoteListState extends State<QuoteList> {
         //a variable pointing to each iteration. it can be any
         //arbitrary value
         children: quotes.map((quote){
-          return Container(
-            child:Text('Author: ${quote.author}, Quote: ${quote.text}'),
-            height: 100.0,
-          );
+          return quoteTemplate(quote);
         }).toList(),
       )
     );
